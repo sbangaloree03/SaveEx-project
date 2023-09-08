@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker - Analytics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            color: white;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .chart-container {
+            margin-top: 20px;
+        }
+
+        .chart {
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Expense Tracker Analytics</h1>
+
+        <!-- Monthly Expense Chart -->
+        <div class="chart">
+            <h2>Monthly Expense Chart</h2>
+            <div class="chart-container">
+                <canvas id="monthlyExpenseChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+
+        <!-- Category-wise Expense Chart -->
+        <div class="chart">
+            <h2>Category-wise Expense Chart</h2>
+            <div class="chart-container">
+                <canvas id="categoryExpenseChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+
+        <!-- Savings Chart -->
+        <div class="chart">
+            <h2>Savings Chart</h2>
+            <div class="chart-container">
+                <canvas id="savingsChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+
+        <!-- Add more charts as needed for your specific analytics -->
+    </div>
+
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // JavaScript code for chart creation and data population goes here
+
+        // Example code to create a bar chart for monthly expenses
+        const monthlyExpenseChart = new Chart(document.getElementById("monthlyExpenseChart"), {
+            type: "bar",
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [
+                    {
+                        label: "Monthly Expenses",
+                        data: [1000, 1200, 900, 1100, 800, 1300, 1500, 1400, 950, 1050, 1120, 980],
+                        backgroundColor: "rgba(87, 59, 138, 0.6)",
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            color: "white", // Change the color of X-axis labels here
+                        },
+                    },
+                },
+            },
+        });
+
+        // Example code to create a pie chart for category-wise expenses
+        const categoryExpenseChart = new Chart(document.getElementById("categoryExpenseChart"), {
+            type: "pie",
+            data: {
+                labels: ["Rent", "Food", "Travel", "Investment", "Freelance"],
+                datasets: [
+                    {
+                        data: [500, 300, 200, 700, 400],
+                        backgroundColor: ["#ff5733", "#ffcc33", "#33ff57", "#33ccff", "#5733ff"],
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: "white", // Change the color of legend (category names) here
+                        },
+                    },
+                },
+            },
+        });
+
+        // Example code to create a line chart for savings
+        const savingsChart = new Chart(document.getElementById("savingsChart"), {
+            type: "line",
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [
+                    {
+                        label: "Savings",
+                        data: [500, 700, 300, 800, 600, 900, 1000, 950, 700, 850, 950, 800],
+                        borderColor: "white", // Change the color of the line here
+                        fill: false,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+            },
+        });
+
+        // Create other charts similarly for your specific analytics
+    </script>
+</body>
+</html>
